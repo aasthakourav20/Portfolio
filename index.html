@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aastha Kourav – Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #09090f;
+    --surface:  #111118;
+    --card:     #16161f;
+    --border:   rgba(255,255,255,0.07);
+    --accent:   #7f5af0;
+    --accent2:  #2cb67d;
+    --accent3:  #ff8906;
+    --text:     #fffffe;
+    --muted:    #94a1b2;
+    --tag-bg:   rgba(127,90,240,0.12);
+    --tag-text: #a78bfa;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 5vw;
+    background: rgba(9,9,15,0.8);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); font-size: 0.88rem; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 5vw 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(127,90,240,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; bottom: -150px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(44,182,125,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--tag-bg); color: var(--tag-text);
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+    padding: 5px 14px; border-radius: 100px;
+    border: 1px solid rgba(127,90,240,0.25);
+    margin-bottom: 1.5rem; text-transform: uppercase;
+  }
+  .hero-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform: scale(1); }
+    50%      { opacity:0.5; transform: scale(0.8); }
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 14ch;
+    margin-bottom: 1.5rem;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--muted); max-width: 55ch;
+    font-weight: 300; margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.75rem 1.6rem; border-radius: 8px;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+  }
+  .btn-primary:hover { background: #6d48e5; transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1px solid var(--border); color: var(--muted);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--text);
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 5vw; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 11px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .tl-item {
+    display: flex; gap: 2rem;
+    margin-bottom: 2.5rem; position: relative;
+  }
+  .tl-dot {
+    width: 23px; height: 23px; border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    flex-shrink: 0; margin-top: 3px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tl-dot::after {
+    content: ''; width: 7px; height: 7px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .tl-dot.green { border-color: var(--accent2); }
+  .tl-dot.green::after { background: var(--accent2); }
+  .tl-dot.orange { border-color: var(--accent3); }
+  .tl-dot.orange::after { background: var(--accent3); }
+  .tl-body { flex: 1; }
+  .tl-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+  .tl-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem; font-weight: 600;
+  }
+  .tl-date {
+    font-size: 0.78rem; color: var(--muted);
+    white-space: nowrap;
+  }
+  .tl-company {
+    font-size: 0.85rem; color: var(--accent2);
+    margin-bottom: 0.8rem; font-weight: 500;
+  }
+  .tl-bullets { list-style: none; }
+  .tl-bullets li {
+    font-size: 0.88rem; color: var(--muted);
+    padding: 4px 0; display: flex; gap: 10px;
+  }
+  .tl-bullets li::before {
+    content: '→'; color: var(--accent); flex-shrink: 0;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .proj-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .proj-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .proj-card:hover { border-color: rgba(127,90,240,0.4); transform: translateY(-4px); }
+  .proj-card:hover::before { opacity: 1; }
+  .proj-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--tag-bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1rem;
+  }
+  .proj-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .proj-desc {
+    font-size: 0.85rem; color: var(--muted);
+    margin-bottom: 1rem; line-height: 1.6;
+  }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 0.72rem; font-weight: 500;
+    background: var(--tag-bg); color: var(--tag-text);
+    padding: 3px 10px; border-radius: 100px;
+    border: 1px solid rgba(127,90,240,0.2);
+  }
+  .proj-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 0.78rem; color: var(--accent);
+    text-decoration: none; margin-top: 1rem;
+    transition: gap 0.2s;
+  }
+  .proj-link:hover { gap: 8px; }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-cat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem;
+  }
+  .skill-cat-label {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .skill-cat-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-size: 0.8rem; padding: 5px 12px; border-radius: 7px;
+    background: var(--surface); color: var(--muted);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--text); }
+
+  /* ── OSS ── */
+  .oss-list { display: flex; flex-direction: column; gap: 1rem; }
+  .oss-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    transition: border-color 0.25s;
+  }
+  .oss-card:hover { border-color: rgba(44,182,125,0.4); }
+  .oss-icon {
+    font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;
+  }
+  .oss-repo {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem; font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .oss-desc { font-size: 0.85rem; color: var(--muted); }
+  .oss-badge {
+    font-size: 0.7rem; padding: 2px 9px; border-radius: 100px;
+    background: rgba(44,182,125,0.12); color: var(--accent2);
+    border: 1px solid rgba(44,182,125,0.25);
+    margin-left: 8px; font-weight: 500;
+  }
+
+  /* ── CERTS ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem;
+    display: flex; gap: 1rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .cert-card:hover { border-color: rgba(255,137,6,0.35); transform: translateY(-3px); }
+  .cert-badge-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: rgba(255,137,6,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .cert-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .cert-issuer { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem;
+    border-top: 3px solid var(--accent);
+  }
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .edu-school { font-size: 0.85rem; color: var(--accent2); margin-bottom: 0.7rem; font-weight: 500; }
+  .edu-detail { font-size: 0.82rem; color: var(--muted); }
+  .edu-date {
+    display: inline-block; margin-top: 0.8rem;
+    font-size: 0.75rem; color: var(--muted);
+    background: var(--surface); padding: 3px 10px; border-radius: 100px;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .achieve-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .achieve-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 0.9rem 1.2rem;
+  }
+  .achieve-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .achieve-text { font-size: 0.87rem; color: var(--muted); }
+  .achieve-text strong { color: var(--text); }
+
+  /* ── CONTACT ── */
+  #contact {
+    text-align: center;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--muted); text-decoration: none; font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 1.5rem;
+    font-size: 0.78rem; color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Aastha<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-tag"><div class="hero-dot"></div> Available for opportunities</div>
+  <h2>Aastha<br>Kourav<br><em>SDE</em></h2>
+  <p class="hero-sub">
+    Backend-focused Software Development Engineer with a passion for distributed systems, real-time data pipelines, and clean APIs. Currently building scalable infrastructure at TailNode Technology.
+  </p>
+  <div class="hero-cta">
+    <a href="mailto:aasthakourav2002@gmail.com" class="btn btn-primary">Get in touch →</a>
+    <a href="#projects" class="btn btn-ghost">See my work</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">10<span>+</span></div>
+      <div class="stat-label">Months Full time SDE</div>
+    </div>
+    <div>
+      <div class="stat-num">6</span></div>
+      <div class="stat-label">Months SDE Intern</div>
+    </div>
+
+    <div>
+      <div class="stat-num">25<span>+</span></div>
+      <div class="stat-label">Open Source Contributions</div>
+    </div>
+    <div>
+      <div class="stat-num">1000<span>+</span></div>
+      <div class="stat-label">DSA Problems Solved</div>
+    </div>
+    <div>
+      <div class="stat-num">8.53</div>
+      <div class="stat-label">CGPA – NIT Bhopal</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="fade-up">
+    <div class="section-label">Career</div>
+    <h2>Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot green"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">Software Development Engineer</div>
+            <div class="tl-date">July 2025 – Present</div>
+          </div>
+          <div class="tl-company">TailNode Technology (Nation with Namo)</div>
+          <ul class="tl-bullets">
+            <li>Building scalable backend APIs with robust data handling and authentication mechanisms.</li>
+            <li>Designing distributed data pipelines using ScyllaDB, ClickHouse, and Kafka for high-performance real-time processing.</li>
+            <li>Developing and optimising frontend apps with React.js and Redux for improved state management.</li>
+            <li>Python scripting for data migrations, testing, and automations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">SDE Intern</div>
+            <div class="tl-date">Jan 2025 – July 2025</div>
+          </div>
+          <div class="tl-company">TailNode Technology (Nation with Namo)</div>
+          <ul class="tl-bullets">
+            <li>Deployed SSO authentication across 3 core applications, streamlining access for 10,000+ employees.</li>
+            <li>Built end-to-end ETL data pipeline streaming from Apache Kafka into ClickHouse with 99.99% data accuracy.</li>
+            <li>Engineered FastAPI backend APIs with 90% test coverage, reducing API latency by 70%.</li>
+            <li>Built interactive analytical dashboards with React.js and Recharts for real-time trend visualisation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot orange"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">Open Source Contributor – GSSoC'24</div>
+            <div class="tl-date">May 2024 – Aug 2024</div>
+          </div>
+          <div class="tl-company">GirlScript Summer of Code 2024</div>
+          <ul class="tl-bullets">
+            <li>Contributed to 25+ open-source projects using Git and GitBash.</li>
+            <li>Coordinated development across 10 developers, achieving a 20% decrease in delivery time.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="fade-up">
+    <div class="section-label">Work</div>
+    <h2>Projects</h2>
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <div class="proj-icon">⚡</div>
+        <div class="proj-title">Kafka Streaming Pipeline</div>
+        <div class="proj-desc">
+          Robust real-time data pipeline from Apache Kafka to ClickHouse enabling low-latency analytics on high-throughput events. Implemented AggregatingMergeTree for sub-second queries on terabytes of streaming data.
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Kafka</span>
+          <span class="tag">ClickHouse</span>
+          <span class="tag">Cassandra</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Materialized Views</span>
+        </div>
+        <a href="https://github.com/aasthakourav20/Kafka-realtime-pipeline" class="proj-link">View Source →</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">🌱</div>
+        <div class="proj-title">CropForesight</div>
+        <div class="proj-desc">
+          Machine learning–powered crop prediction platform with streamlined data preprocessing and rich analysis insights. Leverages Matplotlib to visualise complex agricultural datasets interactively.
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">React.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+        <a href="https://github.com/aasthakourav20/CropForesight" class="proj-link">View Source →</a>
+        <a href="https://farmer-help.netlify.app/" class="proj-link">Live Demo →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fade-up">
+    <div class="section-label">Stack</div>
+    <h2>Skills & Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <div class="skill-cat-label">Languages</div>
+        <div class="skill-chips">
+          <span class="chip">C / C++</span>
+          <span class="chip">Python</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">TypeScript</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">Frontend & Backend</div>
+        <div class="skill-chips">
+          <span class="chip">React.js</span>
+          <span class="chip">Redux</span>
+          <span class="chip">FastAPI</span>
+          <span class="chip">Django REST</span>
+          <span class="chip">MUI</span>
+          <span class="chip">Pytest</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">Databases & Cloud</div>
+        <div class="skill-chips">
+          <span class="chip">ClickHouse</span>
+          <span class="chip">ScyllaDB</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Cassandra</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">DevOps & Tools</div>
+        <div class="skill-chips">
+          <span class="chip">Kafka</span>
+          <span class="chip">Docker</span>
+          <span class="chip">ArgoCD</span>
+          <span class="chip">Grafana</span>
+          <span class="chip">Git</span>
+          <span class="chip">Postman</span>
+          <span class="chip">Streamlit</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">Coursework</div>
+        <div class="skill-chips">
+          <span class="chip">DSA</span>
+          <span class="chip">DBMS</span>
+          <span class="chip">System Design</span>
+          <span class="chip">OOPs</span>
+          <span class="chip">OS</span>
+          <span class="chip">Computer Networks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN SOURCE -->
+<section id="oss" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="fade-up">
+    <div class="section-label">Community</div>
+    <h2>Open Source</h2>
+    <div class="oss-list">
+      <div class="oss-card">
+        <div class="oss-icon">🌐</div>
+        <div>
+          <div class="oss-repo">GirlScript Summer of Code 2024 <span class="oss-badge">Certified</span></div>
+          <div class="oss-desc">Contributed to 25+ open-source projects over 4 months. Coordinated with 10 developers using Git, resulting in a 20% decrease in project delivery time across all repositories.</div>
+        </div>
+      </div>
+      <div class="oss-card">
+        <div class="oss-icon">🏆</div>
+        <div>
+          <div class="oss-repo">Microsoft CWB'24 Hackathon</div>
+          <div class="oss-desc">Participated in the CWB'24 Hackathon by Microsoft, working on a real-world problem statement with a cross-functional team.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="fade-up">
+    <div class="section-label">Credentials</div>
+    <h2>Certifications</h2>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-badge-icon">🤖</div>
+        <div>
+          <div class="cert-name">Cognizant AI Job Simulation</div>
+          <div class="cert-issuer">Cognizant via Forage · AI, ML & Python</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge-icon">🌸</div>
+        <div>
+          <div class="cert-name">GSSoC'24 Contributor</div>
+          <div class="cert-issuer">GirlScript Summer of Code · 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="fade-up">
+    <div class="section-label">Background</div>
+    <h2>Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech – Electronics & Communication Engineering</div>
+        <div class="edu-school">Maulana Azad National Institute of Technology, Bhopal</div>
+        <div class="edu-detail">CGPA: <strong style="color:var(--text)">8.53 / 10</strong></div>
+        <div class="edu-date">Sep 2021 – May 2025</div>
+      </div>
+      <div class="edu-card" style="border-top-color: var(--accent2);">
+        <div class="edu-degree">CBSE Class XII</div>
+        <div class="edu-school">BSL Public School</div>
+        <div class="edu-detail">Percentage: <strong style="color:var(--text)">95.8%</strong></div>
+        <div class="edu-date">April 2020 – March 2021</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="fade-up">
+    <div class="section-label">Highlights</div>
+    <h2>Achievements</h2>
+    <div class="achieve-list">
+      <div class="achieve-item">
+        <div class="achieve-icon">💡</div>
+        <div class="achieve-text"><strong>1000+ DSA problems</strong> solved across GFG, LeetCode, and CodeStudio.</div>
+      </div>
+      <div class="achieve-item">
+        <div class="achieve-icon">⚔️</div>
+        <div class="achieve-text"><strong>300+ competitive programming problems</strong> solved on Codeforces and HackerRank.</div>
+      </div>
+      <div class="achieve-item">
+        <div class="achieve-icon">👩‍💻</div>
+        <div class="achieve-text">Member of <strong>Zenith Coding Club</strong> at MANIT — guided 30+ female students in technology and DSA.</div>
+      </div>
+      <div class="achieve-item">
+        <div class="achieve-icon">🚀</div>
+        <div class="achieve-text">Deployed <strong>SSO authentication</strong> across 3 apps serving 10,000+ employees at TailNode Technology.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-up">
+    <div class="section-label">Let's Connect</div>
+    <h2 style="margin-bottom:0.5rem;">Get In Touch</h2>
+    <p style="color:var(--muted); font-size:0.95rem; max-width:45ch; margin:0 auto;">
+      Open to full-time SDE roles, backend engineering opportunities, and interesting open-source collaborations.
+    </p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:aasthakourav2002@gmail.com">✉ aasthakourav2002@gmail.com</a>
+      <a class="contact-link" href="tel:+918817875881">📞 +91 8817875881</a>
+      <a class="contact-link" href="#">⌥ LinkedIn</a>
+      <a class="contact-link" href="#">⌘ GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built with ♥ — Aastha Kourav © 2025
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
