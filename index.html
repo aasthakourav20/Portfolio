@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Aastha Kourav – Software Engineer</title>
+<title>Aastha Kourav – Software Development Engineer</title>
+<meta name="description" content="Aastha Kourav – Backend-focused Software Development Engineer building scalable REST APIs, CDC & ETL data pipelines, secure SSO, and GenAI/MCP integrations."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,7 +24,7 @@
     --tag-text: #a78bfa;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -39,6 +41,7 @@
     padding: 1rem 5vw;
     background: rgba(9,9,15,0.8);
     backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
@@ -55,6 +58,11 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--text); }
+  .nav-toggle {
+    display: none; background: none; border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 6px 10px;
+    font-size: 1rem; cursor: pointer;
+  }
 
   /* ── HERO ── */
   #hero {
@@ -76,7 +84,7 @@
     pointer-events: none;
   }
   .hero-tag {
-    display: inline-flex; align-items: center; gap: 6px;
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
     background: var(--tag-bg); color: var(--tag-text);
     font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
     padding: 5px 14px; border-radius: 100px;
@@ -101,11 +109,19 @@
     margin-bottom: 1.5rem;
   }
   h1 em { font-style: normal; color: var(--accent); }
+  .hero-role {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    font-weight: 600; color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .hero-role .typed { color: var(--accent2); border-right: 2px solid var(--accent2); padding-right: 3px; }
   .hero-sub {
     font-size: clamp(1rem, 2vw, 1.15rem);
-    color: var(--muted); max-width: 55ch;
+    color: var(--muted); max-width: 60ch;
     font-weight: 300; margin-bottom: 2.5rem;
   }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
   .hero-cta {
     display: flex; gap: 1rem; flex-wrap: wrap;
   }
@@ -139,6 +155,7 @@
 
   /* ── SECTIONS ── */
   section { padding: 6rem 5vw; }
+  .alt-bg { background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
   .section-label {
     font-size: 0.75rem; font-weight: 600;
     letter-spacing: 0.12em; text-transform: uppercase;
@@ -150,6 +167,45 @@
     font-weight: 700; letter-spacing: -0.02em;
     margin-bottom: 3rem;
   }
+
+  /* ── ABOUT / IMPACT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: start;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+  }
+  .impact-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.2rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .impact-card:hover { border-color: rgba(44,182,125,0.4); transform: translateY(-3px); }
+  .impact-num {
+    font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700;
+    color: var(--accent2); line-height: 1.1;
+  }
+  .impact-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+  /* ── WHAT I DO ── */
+  .focus-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;
+  }
+  .focus-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .focus-card:hover { border-color: rgba(127,90,240,0.4); transform: translateY(-4px); }
+  .focus-icon {
+    width: 44px; height: 44px; border-radius: 10px; background: var(--tag-bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1rem;
+  }
+  .focus-title { font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 0.4rem; }
+  .focus-desc { font-size: 0.85rem; color: var(--muted); }
 
   /* ── EXPERIENCE ── */
   .timeline { position: relative; }
@@ -177,7 +233,7 @@
   .tl-dot.green::after { background: var(--accent2); }
   .tl-dot.orange { border-color: var(--accent3); }
   .tl-dot.orange::after { background: var(--accent3); }
-  .tl-body { flex: 1; }
+  .tl-body { flex: 1; min-width: 0; }
   .tl-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
   .tl-title {
     font-family: 'Syne', sans-serif;
@@ -196,9 +252,11 @@
     font-size: 0.88rem; color: var(--muted);
     padding: 4px 0; display: flex; gap: 10px;
   }
+  .tl-bullets li strong { color: var(--text); font-weight: 500; }
   .tl-bullets li::before {
     content: '→'; color: var(--accent); flex-shrink: 0;
   }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.9rem; }
 
   /* ── PROJECTS ── */
   .projects-grid {
@@ -213,6 +271,7 @@
     padding: 1.5rem;
     transition: border-color 0.25s, transform 0.25s;
     position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
   }
   .proj-card::before {
     content: '';
@@ -235,8 +294,15 @@
   }
   .proj-desc {
     font-size: 0.85rem; color: var(--muted);
-    margin-bottom: 1rem; line-height: 1.6;
+    margin-bottom: 0.8rem; line-height: 1.6;
   }
+  .proj-points { list-style: none; margin-bottom: 1rem; }
+  .proj-points li {
+    font-size: 0.82rem; color: var(--muted); padding: 3px 0;
+    display: flex; gap: 8px;
+  }
+  .proj-points li::before { content: '▹'; color: var(--accent2); flex-shrink: 0; }
+  .proj-points li strong { color: var(--text); font-weight: 500; }
   .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag {
     font-size: 0.72rem; font-weight: 500;
@@ -244,10 +310,11 @@
     padding: 3px 10px; border-radius: 100px;
     border: 1px solid rgba(127,90,240,0.2);
   }
+  .proj-links { display: flex; gap: 1.2rem; margin-top: auto; padding-top: 1rem; }
   .proj-link {
     display: inline-flex; align-items: center; gap: 4px;
     font-size: 0.78rem; color: var(--accent);
-    text-decoration: none; margin-top: 1rem;
+    text-decoration: none;
     transition: gap 0.2s;
   }
   .proj-link:hover { gap: 8px; }
@@ -304,7 +371,7 @@
     font-size: 0.7rem; padding: 2px 9px; border-radius: 100px;
     background: rgba(44,182,125,0.12); color: var(--accent2);
     border: 1px solid rgba(44,182,125,0.25);
-    margin-left: 8px; font-weight: 500;
+    margin-left: 8px; font-weight: 500; white-space: nowrap;
   }
 
   /* ── CERTS ── */
@@ -352,7 +419,7 @@
     margin-bottom: 0.4rem;
   }
   .edu-school { font-size: 0.85rem; color: var(--accent2); margin-bottom: 0.7rem; font-weight: 500; }
-  .edu-detail { font-size: 0.82rem; color: var(--muted); }
+  .edu-detail { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; }
   .edu-date {
     display: inline-block; margin-top: 0.8rem;
     font-size: 0.75rem; color: var(--muted);
@@ -360,7 +427,7 @@
   }
 
   /* ── ACHIEVEMENTS ── */
-  .achieve-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .achieve-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.9rem; }
   .achieve-item {
     display: flex; gap: 12px; align-items: flex-start;
     background: var(--card); border: 1px solid var(--border);
@@ -377,13 +444,14 @@
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
-  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
   .contact-link {
     display: flex; align-items: center; gap: 8px;
     color: var(--muted); text-decoration: none; font-size: 0.9rem;
-    transition: color 0.2s;
+    padding: 0.6rem 1.1rem; border: 1px solid var(--border); border-radius: 8px;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .contact-link:hover { color: var(--accent); }
+  .contact-link:hover { color: var(--text); border-color: var(--accent); }
 
   /* ── FOOTER ── */
   footer {
@@ -397,10 +465,28 @@
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1; transform: none; transition: none; }
+    .hero-dot { animation: none; }
+    html { scroll-behavior: auto; }
+  }
 
-  @media (max-width: 600px) {
-    .nav-links { display: none; }
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 0; background: rgba(9,9,15,0.97);
+      border-bottom: 1px solid var(--border); padding: 0.5rem 5vw 1rem;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { display: block; padding: 0.6rem 0; }
     .hero-stats { gap: 2rem; }
+    .tl-item { gap: 1rem; }
+    section { padding: 4.5rem 5vw; }
+    .projects-grid, .achieve-list, .edu-grid, .certs-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -409,7 +495,9 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#hero">Aastha<span>.</span></a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -422,31 +510,32 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="hero-tag"><div class="hero-dot"></div> Available for opportunities</div>
-  <h2>Aastha<br>Kourav<br><em>SDE</em></h2>
+  <div class="hero-tag"><div class="hero-dot"></div> Open to SDE opportunities</div>
+  <h1>Aastha<br>Kourav<br><em>SDE</em></h1>
+  <div class="hero-role">I build <span class="typed" id="typed">scalable REST APIs</span></div>
   <p class="hero-sub">
-    Backend-focused Software Development Engineer with a passion for distributed systems, real-time data pipelines, and clean APIs. Currently building scalable infrastructure at TailNode Technology.
+    Backend-focused Software Development Engineer building <strong>scalable REST APIs</strong>, <strong>CDC-based data sync and ETL pipelines</strong>, and <strong>secure SSO with OAuth 2.0 &amp; JWT</strong>. Currently shipping production systems at TailNode Technology with Python, FastAPI, React.js, Kafka and distributed databases.
   </p>
   <div class="hero-cta">
     <a href="mailto:aasthakourav2002@gmail.com" class="btn btn-primary">Get in touch →</a>
     <a href="#projects" class="btn btn-ghost">See my work</a>
+    <a href="https://github.com/aasthakourav20" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
   </div>
   <div class="hero-stats">
     <div>
-      <div class="stat-num">10<span>+</span></div>
-      <div class="stat-label">Months Full time SDE</div>
+      <div class="stat-num"><span id="exp-months">21</span><span>+</span></div>
+      <div class="stat-label">Months Industry Experience</div>
     </div>
-    <div>
-      <div class="stat-num">6</span></div>
-      <div class="stat-label">Months SDE Intern</div>
-    </div>
-
     <div>
       <div class="stat-num">25<span>+</span></div>
-      <div class="stat-label">Open Source Contributions</div>
+      <div class="stat-label">Production REST APIs</div>
     </div>
     <div>
-      <div class="stat-num">1000<span>+</span></div>
+      <div class="stat-num">10K<span>+</span></div>
+      <div class="stat-label">Employees on SSO I Built</div>
+    </div>
+    <div>
+      <div class="stat-num">1300<span>+</span></div>
       <div class="stat-label">DSA Problems Solved</div>
     </div>
     <div>
@@ -456,8 +545,61 @@
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="alt-bg">
+  <div class="fade-up">
+    <div class="section-label">About</div>
+    <h2>Turning requirements into production-ready systems</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a <strong>Software Development Engineer at TailNode Technology (Nation with Namo)</strong>, where I started as an intern in January 2025 and moved to a full-time role in July 2025.</p>
+        <p>My work sits on the backend and data side: <strong>REST APIs with FastAPI and Django</strong>, <strong>real-time pipelines with Kafka, Debezium and ClickHouse</strong>, and <strong>authentication with OAuth 2.0, JWT and SSO</strong>. I also build React.js dashboards so the data is actually usable.</p>
+        <p>Beyond that, I work with <strong>Microservices, AWS, Kubernetes</strong> and <strong>GenAI / Agentic AI with MCP servers</strong>. I work directly with clients to gather requirements and ship well-tested features in Agile sprints.</p>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-card"><div class="impact-num">99.99%</div><div class="impact-label">Data accuracy on Kafka → ClickHouse ETL</div></div>
+        <div class="impact-card"><div class="impact-num">70%</div><div class="impact-label">API latency reduction via caching</div></div>
+        <div class="impact-card"><div class="impact-num">90%</div><div class="impact-label">Test coverage maintained</div></div>
+        <div class="impact-card"><div class="impact-num">30%</div><div class="impact-label">Fewer production bugs</div></div>
+        <div class="impact-card"><div class="impact-num">80%</div><div class="impact-label">Less manual data-migration effort</div></div>
+        <div class="impact-card"><div class="impact-num">&lt;2s</div><div class="impact-label">Dashboard refresh, down from minutes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I DO -->
+<section id="focus">
+  <div class="fade-up">
+    <div class="section-label">Focus Areas</div>
+    <h2>What I Do</h2>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-icon">⚙️</div>
+        <div class="focus-title">Backend & APIs</div>
+        <div class="focus-desc">Scalable REST APIs with FastAPI and Django REST Framework: validation, serialization, caching and microservices.</div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🔄</div>
+        <div class="focus-title">Data Pipelines</div>
+        <div class="focus-desc">Real-time CDC with Debezium + Kafka and ETL into ClickHouse using Materialized Views and AggregatingMergeTree.</div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🔐</div>
+        <div class="focus-title">Auth & Security</div>
+        <div class="focus-desc">SSO architecture, OAuth 2.0 and JWT authentication &amp; authorization, following security best practices.</div>
+      </div>
+      <div class="focus-card">
+        <div class="focus-icon">🤖</div>
+        <div class="focus-title">GenAI & Agentic AI</div>
+        <div class="focus-desc">LLM integration, MCP servers, prompt engineering and evals for AI-powered features.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" class="alt-bg">
   <div class="fade-up">
     <div class="section-label">Career</div>
     <h2>Experience</h2>
@@ -472,11 +614,16 @@
           </div>
           <div class="tl-company">TailNode Technology (Nation with Namo)</div>
           <ul class="tl-bullets">
-            <li>Building scalable backend APIs with robust data handling and authentication mechanisms.</li>
-            <li>Designing distributed data pipelines using ScyllaDB, ClickHouse, and Kafka for high-performance real-time processing.</li>
-            <li>Developing and optimising frontend apps with React.js and Redux for improved state management.</li>
-            <li>Python scripting for data migrations, testing, and automations.</li>
+            <li><span>Developed and deployed <strong>25+ scalable REST APIs</strong> using FastAPI and Django, with JWT authentication, request validation and data serialization for high-volume data services.</span></li>
+            <li><span>Created an <strong>end-to-end ETL pipeline</strong> streaming analytical data from Apache Kafka into ClickHouse through a multi-stage transformation model with Materialized Views, at <strong>99.99% data accuracy</strong>.</span></li>
+            <li><span>Built <strong>real-time data sync pipelines</strong> using Debezium change data capture (CDC) and Kafka in an event-driven architecture, keeping data consistent across database systems.</span></li>
+            <li><span>Developing <strong>5+ interactive dashboard components</strong> with React.js and Redux for real-time analytics visualization.</span></li>
+            <li><span>Enforced unit, evals, integration and end-to-end testing with Pytest and Jest, maintaining <strong>90% coverage</strong> and reducing production bugs by <strong>30%</strong>.</span></li>
+            <li><span>Collaborated with clients to gather requirements and deliver end-to-end features in Agile sprints, including real-time data traversal and PDF/Doc report generation.</span></li>
           </ul>
+          <div class="tl-tags">
+            <span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">Kafka</span><span class="tag">Debezium</span><span class="tag">ClickHouse</span><span class="tag">React.js</span><span class="tag">Redux</span><span class="tag">Pytest</span><span class="tag">Jest</span>
+          </div>
         </div>
       </div>
 
@@ -484,16 +631,18 @@
         <div class="tl-dot"></div>
         <div class="tl-body">
           <div class="tl-header">
-            <div class="tl-title">SDE Intern</div>
+            <div class="tl-title">Software Development Engineer Intern</div>
             <div class="tl-date">Jan 2025 – July 2025</div>
           </div>
           <div class="tl-company">TailNode Technology (Nation with Namo)</div>
           <ul class="tl-bullets">
-            <li>Deployed SSO authentication across 3 core applications, streamlining access for 10,000+ employees.</li>
-            <li>Built end-to-end ETL data pipeline streaming from Apache Kafka into ClickHouse with 99.99% data accuracy.</li>
-            <li>Engineered FastAPI backend APIs with 90% test coverage, reducing API latency by 70%.</li>
-            <li>Built interactive analytical dashboards with React.js and Recharts for real-time trend visualisation.</li>
+            <li><span>Deployed a <strong>Single Sign-On (SSO)</strong> architecture across three core applications, enhancing security and streamlining access for <strong>10,000+ employees</strong> in line with company security guidelines.</span></li>
+            <li><span>Optimized APIs and test suites to 90% coverage and implemented caching for high-volume ClickHouse and ScyllaDB queries, cutting <strong>API latency by 70%</strong>.</span></li>
+            <li><span>Automated Python data migration scripts, processing <strong>50K+ records</strong> across distributed databases and reducing manual effort by <strong>80%</strong>.</span></li>
           </ul>
+          <div class="tl-tags">
+            <span class="tag">SSO</span><span class="tag">OAuth 2.0</span><span class="tag">JWT</span><span class="tag">ScyllaDB</span><span class="tag">ClickHouse</span><span class="tag">Python</span>
+          </div>
         </div>
       </div>
 
@@ -506,8 +655,8 @@
           </div>
           <div class="tl-company">GirlScript Summer of Code 2024</div>
           <ul class="tl-bullets">
-            <li>Contributed to 25+ open-source projects using Git and GitBash.</li>
-            <li>Coordinated development across 10 developers, achieving a 20% decrease in delivery time.</li>
+            <li><span>Contributed code improvements and bug fixes to <strong>10+ open-source projects</strong> via pull requests.</span></li>
+            <li><span>Collaborated with teams using Git-based workflows, reducing project delivery time by <strong>20%</strong>.</span></li>
           </ul>
         </div>
       </div>
@@ -517,7 +666,7 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+<section id="projects">
   <div class="fade-up">
     <div class="section-label">Work</div>
     <h2>Projects</h2>
@@ -527,8 +676,13 @@
         <div class="proj-icon">⚡</div>
         <div class="proj-title">Kafka Streaming Pipeline</div>
         <div class="proj-desc">
-          Robust real-time data pipeline from Apache Kafka to ClickHouse enabling low-latency analytics on high-throughput events. Implemented AggregatingMergeTree for sub-second queries on terabytes of streaming data.
+          Real-time data pipeline streaming from Apache Kafka to ClickHouse for low-latency analytics on high-throughput event data, supporting faster decisions across three teams.
         </div>
+        <ul class="proj-points">
+          <li><span>Pre-aggregates metrics (count, sum, avg) with the <strong>AggregatingMergeTree</strong> engine</span></li>
+          <li><span><strong>Sub-second queries</strong> on terabytes of streaming data</span></li>
+          <li><span>Dashboard refresh cut from minutes to <strong>under 2 seconds</strong></span></li>
+        </ul>
         <div class="proj-tags">
           <span class="tag">Kafka</span>
           <span class="tag">ClickHouse</span>
@@ -536,23 +690,48 @@
           <span class="tag">FastAPI</span>
           <span class="tag">Materialized Views</span>
         </div>
-        <a href="https://github.com/aasthakourav20/Kafka-realtime-pipeline" class="proj-link">View Source →</a>
+        <div class="proj-links">
+          <a href="https://github.com/aasthakourav20/Kafka-realtime-pipeline" target="_blank" rel="noopener" class="proj-link">View Source →</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-icon">🧠</div>
+        <div class="proj-title">AI Mental Health Chatbot</div>
+        <div class="proj-desc">
+          Built at Microsoft's Code; Without Barriers Hackathon (CWB'24): an AI-powered chatbot tackling a real-world mental health problem statement with a cross-functional team.
+        </div>
+        <ul class="proj-points">
+          <li><span>Conversational AI for <strong>mental health support</strong></span></li>
+          <li><span>Real-world problem statement from <strong>Microsoft</strong></span></li>
+        </ul>
+        <div class="proj-tags">
+          <span class="tag">AI / LLM</span>
+          <span class="tag">Python</span>
+          <span class="tag">Hackathon</span>
+        </div>
       </div>
 
       <div class="proj-card">
         <div class="proj-icon">🌱</div>
         <div class="proj-title">CropForesight</div>
         <div class="proj-desc">
-          Machine learning–powered crop prediction platform with streamlined data preprocessing and rich analysis insights. Leverages Matplotlib to visualise complex agricultural datasets interactively.
+          Machine learning–powered crop prediction platform with streamlined data preprocessing and analysis insights, using Matplotlib to visualise complex agricultural datasets.
         </div>
+        <ul class="proj-points">
+          <li><span>ML model for <strong>crop recommendation</strong></span></li>
+          <li><span>Deployed with a <strong>live React.js frontend</strong></span></li>
+        </ul>
         <div class="proj-tags">
           <span class="tag">Machine Learning</span>
           <span class="tag">React.js</span>
           <span class="tag">Python</span>
           <span class="tag">Matplotlib</span>
         </div>
-        <a href="https://github.com/aasthakourav20/CropForesight" class="proj-link">View Source →</a>
-        <a href="https://farmer-help.netlify.app/" class="proj-link">Live Demo →</a>
+        <div class="proj-links">
+          <a href="https://github.com/aasthakourav20/CropForesight" target="_blank" rel="noopener" class="proj-link">View Source →</a>
+          <a href="https://farmer-help.netlify.app/" target="_blank" rel="noopener" class="proj-link">Live Demo →</a>
+        </div>
       </div>
 
     </div>
@@ -560,7 +739,7 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
+<section id="skills" class="alt-bg">
   <div class="fade-up">
     <div class="section-label">Stack</div>
     <h2>Skills & Technologies</h2>
@@ -568,79 +747,141 @@
       <div class="skill-cat">
         <div class="skill-cat-label">Languages</div>
         <div class="skill-chips">
-          <span class="chip">C / C++</span>
           <span class="chip">Python</span>
+          <span class="chip">C / C++</span>
           <span class="chip">JavaScript</span>
           <span class="chip">TypeScript</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Java</span>
         </div>
       </div>
       <div class="skill-cat">
-        <div class="skill-cat-label">Frontend & Backend</div>
+        <div class="skill-cat-label">Backend</div>
+        <div class="skill-chips">
+          <span class="chip">FastAPI</span>
+          <span class="chip">Django REST Framework</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Microservices</span>
+          <span class="chip">Microlith</span>
+          <span class="chip">Event-Driven Architecture</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">Frontend</div>
         <div class="skill-chips">
           <span class="chip">React.js</span>
           <span class="chip">Redux</span>
-          <span class="chip">FastAPI</span>
-          <span class="chip">Django REST</span>
-          <span class="chip">MUI</span>
-          <span class="chip">Pytest</span>
+          <span class="chip">Material UI</span>
+          <span class="chip">Recharts</span>
+          <span class="chip">HTML / CSS</span>
         </div>
       </div>
       <div class="skill-cat">
-        <div class="skill-cat-label">Databases & Cloud</div>
+        <div class="skill-cat-label">Databases & Data</div>
         <div class="skill-chips">
           <span class="chip">ClickHouse</span>
           <span class="chip">ScyllaDB</span>
-          <span class="chip">PostgreSQL</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">MongoDB</span>
           <span class="chip">Cassandra</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">Redis</span>
+          <span class="chip">ETL Pipelines</span>
+          <span class="chip">CDC</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">Security</div>
+        <div class="skill-chips">
+          <span class="chip">OAuth 2.0</span>
+          <span class="chip">JWT</span>
+          <span class="chip">SSO</span>
+          <span class="chip">AuthN &amp; AuthZ</span>
+          <span class="chip">Security Best Practices</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">Cloud & AI</div>
+        <div class="skill-chips">
+          <span class="chip">AWS</span>
+          <span class="chip">Kubernetes</span>
+          <span class="chip">OpenTelemetry</span>
+          <span class="chip">Generative AI</span>
+          <span class="chip">Agentic AI</span>
+          <span class="chip">MCP Servers</span>
+          <span class="chip">LLM Integration</span>
+          <span class="chip">Prompt Engineering</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-label">DevOps & Tools</div>
         <div class="skill-chips">
-          <span class="chip">Kafka</span>
+          <span class="chip">Apache Kafka</span>
+          <span class="chip">Debezium</span>
           <span class="chip">Docker</span>
+          <span class="chip">GitLab CI/CD</span>
           <span class="chip">ArgoCD</span>
+          <span class="chip">Prometheus</span>
           <span class="chip">Grafana</span>
+          <span class="chip">Signoz</span>
           <span class="chip">Git</span>
-          <span class="chip">Postman</span>
-          <span class="chip">Streamlit</span>
+          <span class="chip">Linux</span>
         </div>
       </div>
       <div class="skill-cat">
-        <div class="skill-cat-label">Coursework</div>
+        <div class="skill-cat-label">Testing</div>
+        <div class="skill-chips">
+          <span class="chip">Pytest</span>
+          <span class="chip">Jest</span>
+          <span class="chip">Evals</span>
+          <span class="chip">Unit</span>
+          <span class="chip">Integration</span>
+          <span class="chip">End-to-End</span>
+          <span class="chip">Postman</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-label">Coursework & Practices</div>
         <div class="skill-chips">
           <span class="chip">DSA</span>
           <span class="chip">DBMS</span>
           <span class="chip">System Design</span>
-          <span class="chip">OOPs</span>
-          <span class="chip">OS</span>
+          <span class="chip">OOP</span>
+          <span class="chip">Operating Systems</span>
           <span class="chip">Computer Networks</span>
+          <span class="chip">Agile</span>
+          <span class="chip">Requirement Gathering</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OPEN SOURCE -->
-<section id="oss" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+<!-- OPEN SOURCE & COMMUNITY -->
+<section id="oss">
   <div class="fade-up">
     <div class="section-label">Community</div>
-    <h2>Open Source</h2>
+    <h2>Open Source & Hackathons</h2>
     <div class="oss-list">
       <div class="oss-card">
         <div class="oss-icon">🌐</div>
         <div>
           <div class="oss-repo">GirlScript Summer of Code 2024 <span class="oss-badge">Certified</span></div>
-          <div class="oss-desc">Contributed to 25+ open-source projects over 4 months. Coordinated with 10 developers using Git, resulting in a 20% decrease in project delivery time across all repositories.</div>
+          <div class="oss-desc">Contributed code improvements and bug fixes to 10+ open-source projects over four months, working with teams through Git-based workflows and helping cut delivery time by 20%.</div>
+        </div>
+      </div>
+      <div class="oss-card">
+        <div class="oss-icon">☀️</div>
+        <div>
+          <div class="oss-repo">Social Summer of Code 2024 (SSoC'24)</div>
+          <div class="oss-desc">Open-source contributor during SSoC'24, contributing pull requests to community projects.</div>
         </div>
       </div>
       <div class="oss-card">
         <div class="oss-icon">🏆</div>
         <div>
-          <div class="oss-repo">Microsoft CWB'24 Hackathon</div>
-          <div class="oss-desc">Participated in the CWB'24 Hackathon by Microsoft, working on a real-world problem statement with a cross-functional team.</div>
+          <div class="oss-repo">Microsoft Code; Without Barriers Hackathon (CWB'24)</div>
+          <div class="oss-desc">Built an AI chatbot for mental health with a cross-functional team, working on a real-world problem statement.</div>
         </div>
       </div>
     </div>
@@ -648,7 +889,7 @@
 </section>
 
 <!-- CERTIFICATIONS -->
-<section id="certifications">
+<section id="certifications" class="alt-bg">
   <div class="fade-up">
     <div class="section-label">Credentials</div>
     <h2>Certifications</h2>
@@ -672,7 +913,7 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="education" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+<section id="education">
   <div class="fade-up">
     <div class="section-label">Background</div>
     <h2>Education</h2>
@@ -681,6 +922,7 @@
         <div class="edu-degree">B.Tech – Electronics & Communication Engineering</div>
         <div class="edu-school">Maulana Azad National Institute of Technology, Bhopal</div>
         <div class="edu-detail">CGPA: <strong style="color:var(--text)">8.53 / 10</strong></div>
+        <div class="edu-detail">Coursework: DSA, DBMS, Computer Networks, Operating Systems, OOP, System Design</div>
         <div class="edu-date">Sep 2021 – May 2025</div>
       </div>
       <div class="edu-card" style="border-top-color: var(--accent2);">
@@ -694,26 +936,26 @@
 </section>
 
 <!-- ACHIEVEMENTS -->
-<section id="achievements">
+<section id="achievements" class="alt-bg">
   <div class="fade-up">
     <div class="section-label">Highlights</div>
-    <h2>Achievements</h2>
+    <h2>Achievements & Leadership</h2>
     <div class="achieve-list">
       <div class="achieve-item">
         <div class="achieve-icon">💡</div>
-        <div class="achieve-text"><strong>1000+ DSA problems</strong> solved across GFG, LeetCode, and CodeStudio.</div>
-      </div>
-      <div class="achieve-item">
-        <div class="achieve-icon">⚔️</div>
-        <div class="achieve-text"><strong>300+ competitive programming problems</strong> solved on Codeforces and HackerRank.</div>
+        <div class="achieve-text"><strong>1300+ DSA & competitive programming problems</strong> solved across LeetCode, GeeksforGeeks, CodeStudio, Codeforces and HackerRank.</div>
       </div>
       <div class="achieve-item">
         <div class="achieve-icon">👩‍💻</div>
-        <div class="achieve-text">Member of <strong>Zenith Coding Club</strong> at MANIT — guided 30+ female students in technology and DSA.</div>
+        <div class="achieve-text">Mentored <strong>30+ students</strong> in DSA and technology as a member of <strong>Zenith Coding Club</strong>, MANIT Bhopal (2021–2025).</div>
       </div>
       <div class="achieve-item">
         <div class="achieve-icon">🚀</div>
-        <div class="achieve-text">Deployed <strong>SSO authentication</strong> across 3 apps serving 10,000+ employees at TailNode Technology.</div>
+        <div class="achieve-text">Deployed <strong>SSO authentication</strong> across 3 apps serving <strong>10,000+ employees</strong> at TailNode Technology.</div>
+      </div>
+      <div class="achieve-item">
+        <div class="achieve-icon">📈</div>
+        <div class="achieve-text">Converted from intern to <strong>full-time SDE</strong> at TailNode Technology within 6 months.</div>
       </div>
     </div>
   </div>
@@ -724,27 +966,58 @@
   <div class="fade-up">
     <div class="section-label">Let's Connect</div>
     <h2 style="margin-bottom:0.5rem;">Get In Touch</h2>
-    <p style="color:var(--muted); font-size:0.95rem; max-width:45ch; margin:0 auto;">
-      Open to full-time SDE roles, backend engineering opportunities, and interesting open-source collaborations.
+    <p style="color:var(--muted); font-size:0.95rem; max-width:48ch; margin:0 auto;">
+      Open to SDE and backend engineering roles, data engineering work, and interesting open-source collaborations. Based in Bhopal, India.
     </p>
     <div class="contact-links">
       <a class="contact-link" href="mailto:aasthakourav2002@gmail.com">✉ aasthakourav2002@gmail.com</a>
       <a class="contact-link" href="tel:+918817875881">📞 +91 8817875881</a>
-      <a class="contact-link" href="#">⌥ LinkedIn</a>
-      <a class="contact-link" href="#">⌘ GitHub</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/aastha-kourav-861164253" target="_blank" rel="noopener">in LinkedIn</a>
+      <a class="contact-link" href="https://github.com/aasthakourav20" target="_blank" rel="noopener">⌘ GitHub</a>
     </div>
   </div>
 </section>
 
 <footer>
-  Built with ♥ — Aastha Kourav © 2025
+  Built with ♥ — Aastha Kourav © <span id="year">2026</span>
 </footer>
 
 <script>
+  // Reveal on scroll
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Months of experience since Jan 2025 (stays current automatically)
+  const start = new Date(2025, 0, 1), now = new Date();
+  const months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  document.getElementById('exp-months').textContent = months;
+  document.getElementById('year').textContent = now.getFullYear();
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav-toggle'), links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Rotating role text
+  const roles = ['scalable REST APIs', 'real-time data pipelines', 'secure SSO systems', 'GenAI & MCP integrations'];
+  const typed = document.getElementById('typed');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let r = 0, c = roles[0].length, deleting = true;
+    setTimeout(function tick() {
+      const word = roles[r];
+      c += deleting ? -1 : 1;
+      typed.textContent = word.slice(0, c);
+      let delay = deleting ? 35 : 70;
+      if (deleting && c === 0) { deleting = false; r = (r + 1) % roles.length; delay = 300; }
+      else if (!deleting && c === roles[r].length) { deleting = true; delay = 1800; }
+      setTimeout(tick, delay);
+    }, 1800);
+  }
 </script>
 </body>
 </html>
